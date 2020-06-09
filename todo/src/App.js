@@ -1,13 +1,15 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useReducer } from 'react';
+import { initialState, reducer } from './reducers/todoReducer';
+import { TodoList } from './components/form';
 import './App.css';
-import { List } from './components/list';
 
 function App() {
+	const [ state, dispatch ] = useReducer(reducer, initialState);
 	return (
 		<div className="App">
 			<header className="App-header">
-				<List />
+				<h1> The List </h1>
+				<TodoList state={state} dispatch={dispatch} />
 			</header>
 		</div>
 	);
